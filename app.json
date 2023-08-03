@@ -21,10 +21,16 @@
       "adaptiveIcon": {
         "foregroundImage": "./assets/images/adaptive-icon.png",
         "backgroundColor": "#ffffff"
-      }
+      },
+      "package": "com.taikhoan21212.sportswearshopapp"
     },
     "web": {
       "favicon": "./assets/images/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "ff8e4b1d-4cd8-4fa5-bf98-015ba2e02634"
+      }
     }
   }
 }

@@ -4,7 +4,7 @@ import * as SplashScreen from "expo-splash-screen";
 import { useFonts } from "expo-font";
 import { Details, Home } from "./screens"
 import { EditProfile, Welcome, Signup, Login } from './screens';
-import { useCallback } from "react";
+import { useCallback, useState, useEffect } from "react";
 import BottomTabNavigation from "./navigations/BottomTabNavigation";
 
 
@@ -29,6 +29,7 @@ export default function App() {
   if (!fontsLoaded) {
     return null
   }
+  
   return (
     <NavigationContainer onReady={onLayoutRootView}>
       <Stack.Navigator initialRouteName='Welcome'>

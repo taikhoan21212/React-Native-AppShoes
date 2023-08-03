@@ -1,18 +1,53 @@
-import { View, Text, Image , Pressable, TextInput, TouchableOpacity } from 'react-native'
+import { View, Text, Image , Pressable, TextInput, TouchableOpacity} from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from '../constants/colors';
 import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox"
 import Button from '../components/Button';
+import Sysmodal from '../components/modal';
 
 const Login = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
     
+    const [username, setUsername] = useState('');
+    const [Password, setPassword] = useState('');
+    const [showModal, setShowModal] = useState(false)
+    const [errorMessage, setErrorMessage] = useState('')
+
+    //handle on hide modal
+    const onHideModal = () => {
+        setShowModal(false)
+    }
+
+    const onChangeUsername = value => {
+        setUsername(value);
+    }
+
+    const onChangePassword = value => {
+        setPassword(value);
+    }
+
+    const onClickLogin = ()=>{
+        if (username.length == 0||Password.length==0){
+            setErrorMessage('please input login infomation');
+            setShowModal(true);
+            return;
+        }
+        console.log('click login',{
+            username,Password
+        })
+    }
+
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
             <View style={{ flex: 1, marginHorizontal: 22 }}>
+                {/* <Sysmodal 
+                    visible={showModal}
+                    message={errorMessage}
+                    onHide={onHideModal} 
+                /> */}
                 <View style={{ marginVertical: 22 }}>
                     <Text style={{
                         fontSize: 22,
@@ -50,6 +85,8 @@ const Login = ({ navigation }) => {
                             placeholder='Enter your email address'
                             placeholderTextColor={COLORS.black}
                             keyboardType='email-address'
+                            value={username}
+                            onChangeText={onChangeUsername}
                             style={{
                                 width: "100%"
                             }}
@@ -78,6 +115,8 @@ const Login = ({ navigation }) => {
                             placeholder='Enter your password'
                             placeholderTextColor={COLORS.black}
                             secureTextEntry={isPasswordShown}
+                            value={Password}
+                            onChangeText={onChangePassword}
                             style={{
                                 width: "100%"
                             }}
