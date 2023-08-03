@@ -70,5 +70,5 @@ jobs:
         run: yarn install --immutable
 
       - name: Publish build
-        run: eas build --platform android --profile preview 
+        run: eas build --platform android --profile preview --non-interactive
         
