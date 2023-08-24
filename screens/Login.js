@@ -1,53 +1,52 @@
-import { View, Text, Image , Pressable, TextInput, TouchableOpacity} from 'react-native'
+import { View, Text, Image, Pressable, TextInput, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { SafeAreaView } from "react-native-safe-area-context";
 import COLORS from '../constants/colors';
 import { Ionicons } from "@expo/vector-icons";
 import Checkbox from "expo-checkbox"
 import Button from '../components/Button';
-import Sysmodal from '../components/modal';
+// import { useDispatch } from 'react-redux';
+// import { useNavigate } from "react-router-native";
+// import { loginUser } from '../redux/apiRequest'
 
 const Login = ({ navigation }) => {
     const [isPasswordShown, setIsPasswordShown] = useState(true);
     const [isChecked, setIsChecked] = useState(false);
-    
-    const [username, setUsername] = useState('');
-    const [Password, setPassword] = useState('');
-    const [showModal, setShowModal] = useState(false)
-    const [errorMessage, setErrorMessage] = useState('')
 
-    //handle on hide modal
-    const onHideModal = () => {
-        setShowModal(false)
-    }
+    const [username, setUsername] = useState("kimngoc");
+    const [password, setPassword] = useState("123456");
+    // const dispatch = useDispatch();
+    // const navigate = useNavigate();
+    // const [error, setError] = useState(false);
+    // const [mes, setMes] = useState("");
+    // const [IsLoggedIn, setIsLoggedIn] = useState(false);
 
-    const onChangeUsername = value => {
-        setUsername(value);
-    }
 
-    const onChangePassword = value => {
-        setPassword(value);
-    }
-
-    const onClickLogin = ()=>{
-        if (username.length == 0||Password.length==0){
-            setErrorMessage('please input login infomation');
-            setShowModal(true);
-            return;
-        }
-        console.log('click login',{
-            username,Password
-        })
-    }
+    // const handleSubmit = async (e) => {
+    //     e.preventDefault();
+    //     const newUser = {
+    //         username: username,
+    //         password: password
+    //     };
+    //     const Logg = await loginUser(newUser, dispatch);
+    //     if (Logg) {
+    //         setMes(newUser.username + " Login successful");
+    //         setError(true);
+    //         setIsLoggedIn(true);
+    //         setTimeout(() => navigate("/"), 500);
+    //     } else {
+    //         setMes("Login failed!!!");
+    //         setError(true);
+    //         setTimeout(() => setError(false), 2000)
+    //     };
+    // };
 
     return (
         <SafeAreaView style={{ flex: 1, backgroundColor: COLORS.white }}>
-            <View style={{ flex: 1, marginHorizontal: 22 }}>
-                {/* <Sysmodal 
-                    visible={showModal}
-                    message={errorMessage}
-                    onHide={onHideModal} 
-                /> */}
+            <View style={{ flex: 1, marginHorizontal: 22 }}
+                // onPress={handleSubmit}
+            >
+                
                 <View style={{ marginVertical: 22 }}>
                     <Text style={{
                         fontSize: 22,
@@ -86,7 +85,7 @@ const Login = ({ navigation }) => {
                             placeholderTextColor={COLORS.black}
                             keyboardType='email-address'
                             value={username}
-                            onChangeText={onChangeUsername}
+                            onChange={(e) => setUsername(e.target.value)}
                             style={{
                                 width: "100%"
                             }}
@@ -115,8 +114,8 @@ const Login = ({ navigation }) => {
                             placeholder='Enter your password'
                             placeholderTextColor={COLORS.black}
                             secureTextEntry={isPasswordShown}
-                            value={Password}
-                            onChangeText={onChangePassword}
+                            value={password}
+                            onChange={(e) => setPassword(e.target.value)}
                             style={{
                                 width: "100%"
                             }}

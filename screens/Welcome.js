@@ -139,14 +139,14 @@ const Welcome = ({ navigation }) => {
                                 color: COLORS.white
                             }}>Already have an account ?</Text>
                             <Pressable
-                                onPress={() => navigation.navigate("Login")}
+                                onPress={() => navigation.navigate("Signup")}
                             >
                                 <Text style={{
                                     fontSize: 16,
                                     color: COLORS.white,
                                     fontWeight: "bold",
                                     marginLeft: 4
-                                }}>Login</Text>
+                                }}>Register</Text>
                             </Pressable>
 
                         </View>

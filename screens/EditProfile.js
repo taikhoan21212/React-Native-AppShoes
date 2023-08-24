@@ -4,7 +4,7 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import * as ImagePicker from "expo-image-picker";
 import { COLORS, FONTS, images } from "../constants";
 import { MaterialIcons } from "@expo/vector-icons";
-import { imagesDataURL } from "../constants/data";
+import { imagesDataURL } from "../constants/datas";
 import DatePicker, { getFormatedDate } from "react-native-modern-datepicker";
 
 const EditProfile = ({ navigation }) => {
